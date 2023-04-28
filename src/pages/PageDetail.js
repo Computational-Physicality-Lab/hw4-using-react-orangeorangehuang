@@ -18,7 +18,7 @@ const PageDetail = () => {
       ? Object.values(shirts[productId].colors)[0]['front']
       : default_img.front;
   const shirt = shirts[productId];
-  const { title, description, price } = shirts[productId] ? cleanShirtData(shirt) : {};
+  const { title, description, price, for_sale } = shirts[productId] ? cleanShirtData(shirt) : {};
   console.log(price);
 
   const change_quantity = (e) => {
@@ -91,14 +91,14 @@ const PageDetail = () => {
 
   useEffect(() => {
     let submit_btn = document.getElementById('submit');
-    if (size !== '' && price !== 'Not Available (No Price)') {
+    if (for_sale && size !== '' && price !== 'Not Available (No Price)') {
       submit_btn.classList.remove('detail-submit-button-disabled');
       submit_btn.addEventListener('click', submit);
     } else {
       submit_btn.classList.add('detail-submit-button-disabled');
       submit_btn.removeEventListener('click', submit);
     }
-  }, [size, color, quantity, price]);
+  }, [size, color, quantity, price, for_sale]);
 
   useEffect(() => {
     setDisplayImg(preview_img);
