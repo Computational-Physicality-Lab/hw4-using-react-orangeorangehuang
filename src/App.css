@@ -52,6 +52,16 @@ img {
   align-self: center;
   margin: auto;
 }
+@media(max-width: 750px) {
+  .header-mid {
+    font-size: 20pt;
+  }
+}
+@media(max-width: 550px) {
+  .header-mid {
+    font-size: 10pt;
+  }
+}
 
 .header-right {
   width: 10vw;
