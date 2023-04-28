@@ -69,8 +69,12 @@ img {
   font-family: 'Open Sans';
   font-size: 20pt;
   text-decoration: none;
-  color: white;
+  color: lightgray;
   display: flex;
+}
+.header-right-button:hover {
+  cursor: pointer;
+  color: white;
 }
 
 .header-right-logo {
@@ -282,11 +286,12 @@ img {
   padding-right: 5%;
   border-radius: 3pt;
 
-  color: white;
+  color: lightgray;
   font-weight: 300;
 }
 .item-button:hover {
   cursor: pointer;
+  color: white;
 }
 
 .item-button-disabled {
@@ -294,6 +299,7 @@ img {
   color: black;
 }
 .item-button-disabled:hover {
+  color: black;
   cursor: not-allowed;
 }
 
