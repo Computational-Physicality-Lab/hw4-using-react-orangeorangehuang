@@ -131,7 +131,7 @@ const shirts = [
   {
     name: 'Test 0 (Without 1 side)',
     description:
-      'Test case 1: without a single side of a color',
+      'Test case 0: without a single side of a color',
     price: '$6.99',
     colors: {
       white: {
@@ -145,7 +145,7 @@ const shirts = [
   },
   {
     description:
-      'Test case 1: without title',
+      'Test case 1: no title',
     price: '$6.99',
     colors: {
       white: {
@@ -159,7 +159,7 @@ const shirts = [
     },
   },
   {
-    name: 'Test2 (without text)',
+    name: 'Test2 (no text)',
     price: '$6.99',
     colors: {
       white: {
@@ -173,9 +173,9 @@ const shirts = [
     }
   },
   {
-    name: 'Test3 (without price)',
+    name: 'Test3 (no price)',
     description:
-      'Test case 3: without price',
+      'Test case 3: no price',
     colors: {
       white: {
         front: MelonWhiteFront,
@@ -188,9 +188,9 @@ const shirts = [
     }
   },
   {
-    name: 'Test4 (without color)',
+    name: 'Test4 (no color)',
     description:
-      'Test case 4: without color',
+      'Test case 4: no color',
     price: '$6.99',
     default: {
       front: DefaultMaleFront,
@@ -198,9 +198,9 @@ const shirts = [
     }
   },
   {
-    name: 'Test5 (without default)',
+    name: 'Test5 (no color, default)',
     description:
-      'Test case 5: without color and default',
+      'Test case 5: no color and default',
     price: '$6.99'
   }
 ];
