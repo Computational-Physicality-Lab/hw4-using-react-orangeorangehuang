@@ -13,7 +13,10 @@ const PageDetail = () => {
   const productId = useParams().productId;
   const navigate = useNavigate();
   const default_img = { front: DefaultMaleFront, back: DefaultMaleBack };
-  const preview_img = shirts[productId] && shirts[productId].colors ? Object.values(shirts[productId].colors)[0]['front'] : default_img.front;
+  const preview_img =
+    shirts[productId] && shirts[productId].colors && Object.values(shirts[productId].colors)[0]['front']
+      ? Object.values(shirts[productId].colors)[0]['front']
+      : default_img.front;
   const shirt = shirts[productId];
   const { title, description, price } = shirts[productId] ? cleanShirtData(shirt) : {};
   console.log(price);
@@ -40,17 +43,18 @@ const PageDetail = () => {
     setDisplayImg(img_temp);
   };
 
-  const color_btns = shirt && shirt.colors ? (
-    Object.keys(shirt.colors).map((color, index) => {
-      return (
-        <div key={index} id={color} className={`detail-content-color-button ${color}`} onClick={click_color}>
-          {color.charAt(0).toUpperCase() + color.slice(1)}
-        </div>
-      );
-    })
-  ) : (
-    <></>
-  );
+  const color_btns =
+    shirt && shirt.colors ? (
+      Object.keys(shirt.colors).map((color, index) => {
+        return (
+          <div key={index} id={color} className={`detail-content-color-button ${color}`} onClick={click_color}>
+            {color.charAt(0).toUpperCase() + color.slice(1)}
+          </div>
+        );
+      })
+    ) : (
+      <></>
+    );
 
   const quan_options = [...Array(20).keys()].map((num) => {
     return (

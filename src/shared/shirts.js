@@ -129,13 +129,28 @@ const shirts = [
     },
   },
   {
-    name: 'Test 0 (Without 1 side)',
+    name: 'Test 0-1 (no back side)',
     description:
-      'Test case 0: without a single side of a color',
+      'Test case 0-1: without a single side of a color',
     price: '$6.99',
     colors: {
       white: {
         front: MelonWhiteFront
+      },
+    },
+    default: {
+      front: DefaultMaleFront,
+      back: DefaultMaleBack,
+    },
+  },
+  {
+    name: 'Test 0-2 (no front side)',
+    description:
+      'Test case 0-2: without a single side of a color',
+    price: '$6.99',
+    colors: {
+      white: {
+        back: MelonWhiteBack
       },
     },
     default: {
