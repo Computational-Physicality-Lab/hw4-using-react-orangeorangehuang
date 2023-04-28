@@ -3,7 +3,7 @@ import { useStateContext } from '../contexts/ContextProvider';
 import { Link } from 'react-router-dom';
 
 const PageCart = () => {
-  const { cartNum, cart, setDisplayImg, updateCartItemQuan, deleteCartItem, checkout, subtotal } = useStateContext();
+  const { cartNum, cart, updateCartItemQuan, deleteCartItem, checkout, subtotal, init_states } = useStateContext();
   console.log(cart);
 
   const quan_options = [...Array(20).keys()].map((num) => {
@@ -30,7 +30,7 @@ const PageCart = () => {
         <div key={id} className='cart-item'>
           <div className='cart-item-left'>
             <div className='cart-item-title'>{item.name}</div>
-            <Link to={`/shirt/${item.number}`} item={item}>
+            <Link to={`/shirt/${item.number}`} onClick={init_states}>
               <img className='cart-item-img' src={item.img} alt='detail'></img>
             </Link>
           </div>
