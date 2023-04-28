@@ -560,6 +560,7 @@ img {
 }
 .cart-remove-button:hover {
   cursor: pointer;
+  color: white;
 }
 
 .cart-empty {

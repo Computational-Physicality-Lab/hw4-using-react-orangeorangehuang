@@ -76,7 +76,7 @@ const PageDetail = () => {
   });
 
   const submit = () => {
-    let img_temp = shirts[productId].colors[color][side] || default_img[side];
+    let img_temp = shirts[productId].colors[color]['front'] || default_img['front'];
     let new_product = {
       name: title,
       id: `${productId}-${color}-${size}`,
