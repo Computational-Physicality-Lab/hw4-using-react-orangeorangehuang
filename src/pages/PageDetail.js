@@ -72,7 +72,7 @@ const PageDetail = () => {
     let img_temp = shirts[productId].colors[color]['front'] || default_img['front'];
     let new_product = {
       name: title,
-      id: `${productId}-${color}-${size}`,
+      id: Date.now().toString(),
       number: productId,
       quantity: quantity,
       color: color,
