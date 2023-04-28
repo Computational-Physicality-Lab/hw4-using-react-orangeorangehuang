@@ -66,7 +66,7 @@ const PageCart = () => {
 
   useEffect(() => {
     checkout();
-  }, [cart]);
+  }, [cart, checkout]);
 
   return (
     <div className='cart-container'>
