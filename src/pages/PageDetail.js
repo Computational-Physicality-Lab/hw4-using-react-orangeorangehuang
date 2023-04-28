@@ -8,26 +8,15 @@ import DefaultMaleFront from '../assets/shirt_images/default-m-front.png';
 import DefaultMaleBack from '../assets/shirt_images/default-m-back.png';
 
 const PageDetail = () => {
-  const {
-    cartNum,
-    setCartNum,
-    displayImg,
-    setDisplayImg,
-    color,
-    setColor,
-    side,
-    setSide,
-    quantity,
-    setQuantity,
-    size,
-    setSize,
-    addToCart
-  } = useStateContext();
+  const { cartNum, setCartNum, displayImg, setDisplayImg, color, setColor, side, setSide, quantity, setQuantity, size, setSize, addToCart } =
+    useStateContext();
   const productId = useParams().productId;
   const navigate = useNavigate();
   const default_img = { front: DefaultMaleFront, back: DefaultMaleBack };
+  const preview_img = shirts[productId] && shirts[productId].colors ? Object.values(shirts[productId].colors)[0]['front'] : default_img.front;
   const shirt = shirts[productId];
-  const { title, description, price } = cleanShirtData(shirt);
+  const { title, description, price } = shirts[productId] ? cleanShirtData(shirt) : {};
+  console.log(price);
 
   const change_quantity = (e) => {
     setQuantity(e.target.value);
@@ -51,13 +40,17 @@ const PageDetail = () => {
     setDisplayImg(img_temp);
   };
 
-  const color_btns = Object.keys(shirt.colors).map((color, index) => {
-    return (
-      <div key={index} id={color} className={`detail-content-color-button ${color}`} onClick={click_color}>
-        {color.charAt(0).toUpperCase() + color.slice(1)}
-      </div>
-    );
-  });
+  const color_btns = shirt && shirt.colors ? (
+    Object.keys(shirt.colors).map((color, index) => {
+      return (
+        <div key={index} id={color} className={`detail-content-color-button ${color}`} onClick={click_color}>
+          {color.charAt(0).toUpperCase() + color.slice(1)}
+        </div>
+      );
+    })
+  ) : (
+    <></>
+  );
 
   const quan_options = [...Array(20).keys()].map((num) => {
     return (
@@ -80,6 +73,7 @@ const PageDetail = () => {
     let new_product = {
       name: title,
       id: `${productId}-${color}-${size}`,
+      number: productId,
       quantity: quantity,
       color: color,
       size: size,
@@ -93,14 +87,22 @@ const PageDetail = () => {
 
   useEffect(() => {
     let submit_btn = document.getElementById('submit');
-    if (size !== '' || price === 'Not Available (No Price)') {
+    if (size !== '' && price !== 'Not Available (No Price)') {
       submit_btn.classList.remove('detail-submit-button-disabled');
       submit_btn.addEventListener('click', submit);
     } else {
       submit_btn.classList.add('detail-submit-button-disabled');
       submit_btn.removeEventListener('click', submit);
     }
-  }, [size, color, quantity]);
+  }, [size, color, quantity, price]);
+
+  useEffect(() => {
+    setDisplayImg(preview_img);
+  }, [preview_img, setDisplayImg]);
+
+  useEffect(() => {
+    if (!shirt) navigate();
+  }, [shirt, navigate]);
 
   return (
     <div className='detail-container'>
